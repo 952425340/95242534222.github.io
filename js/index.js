@@ -40,4 +40,17 @@ function next(){
 	states.push(states.shift());
 	move();
 }
-setInterval(next,3000);
+// 自动轮播
+var interval = null;
+function autoPlay(){
+	interval=setInterval(function(){
+		next();
+	},3000);
+}
+autoPlay();
+// 停止轮播
+$('#box li').add('#box section').hover(function(){
+	clearInterval(interval);
+},function(){
+	autoPlay();
+});
